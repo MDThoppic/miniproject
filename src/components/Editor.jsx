@@ -10,6 +10,7 @@ import 'codemirror/theme/night.css';
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css';
+import 'codemirror/mode/php/php';
 
 import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/edit/closetag';
@@ -30,7 +31,8 @@ const Editor = ({ language, value, setEditorState }) => {
   return (
     <div className="editor-container">
       <div style={{marginBottom: "10px"}}>
-        <label for="cars">Choose a theme: </label>
+        <label htmlFor="cars" style={{color:"white"}}>Choose a theme: </label>
+        
         <select name="theme" onChange={(el) => {
           setTheme(el.target.value)
         }}>
@@ -40,12 +42,15 @@ const Editor = ({ language, value, setEditorState }) => {
             ))
           }
         </select>
+        <h4 style={{color:"white"}}>Notes:-</h4>
+
       </div>
       <ControlledEditorComponent
         onBeforeChange={handleChange}
         value= {value}
         className="code-mirror-wrapper"
         options={{
+          
           lineWrapping: true,
           lint: true,
           mode: language,

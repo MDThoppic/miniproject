@@ -1,6 +1,7 @@
 body {
   /* background-color: #0F151D; */
-  padding: 3rem;
+  padding: 4rem;
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #2f3241 100%);
 }
 .tab-button-container{
   display: flex;
@@ -8,3 +9,4 @@ body {
 .editor-container{
   padding-top: .4%;
 }
+

@@ -25,19 +25,20 @@ function App() {
             <body>${html}</body>
             <style>${css}</style>
             <script>${js}</script>
+            
           </html>
         `
       )
     }, 250);
 
     return () => clearTimeout(timeOut)
-  }, [html, css, js])
+  }, [html, css, js ])
 
   return (
     <div className="App">
-      <center><h1 >Welcome to online code editor</h1></center>
+      <center><h1 style={{color:"white"}} >Welcome to online code editor</h1></center>
       <div className="tab-button-container">
-        <Button  title="HTML" onClick={() => {
+        <Button className="button" title="HTML" onClick={() => {
           onTabClick('html')
         }} />
         <Button title="CSS" onClick={() => {
@@ -45,44 +46,51 @@ function App() {
         }} />
         <Button title="JavaScript" onClick={() => {
           onTabClick('js')
+          
         }} />
+       
       </div>
-      <div className="editor-container">
-        {
-          openedEditor === 'html' ? (
-            <Editor
-              language="xml"
-              displayName="HTML"
-              value={html}
-              setEditorState={setHtml}
-            />
-          ) : openedEditor === 'css' ? (
-            <Editor
-              language="css"
-              displayName="CSS"
-              value={css}
-              setEditorState={setCss}
-            />
-          ) : (
-            <Editor
-              language="javascript"
-              displayName="JS"
-              value={js}
-              setEditorState={setJs}
-            />
-          )
-        }
-      </div>
-      <div>
-        <iframe
-          id="my_iframe"
-          srcDoc={srcDoc}
-          title="output"
-          sandbox="allow-scripts"
-          frameBorder="1"
-          width="100%"
-          height="100%"
-        />
+      <div className='continer'>
+        <div className="editor-container">
+          {
+            openedEditor === 'html' ? (
+              <Editor
+              
+                language="xml"
+                displayName="HTML"
+                value={html}
+                setEditorState={setHtml}                
+              />
+            ) : openedEditor === 'css' ? (
+              <Editor
+                language="css"
+                displayName="CSS"
+                value={css}
+                setEditorState={setCss}
+              />
+            ) : openedEditor === 'js' ? (
+              <Editor
+                language="javascript"
+                displayName="JS"
+                value={js}
+                setEditorState={setJs}
+              />
+            ):null
+          }
+        </div>
+        <div style={{color:"white"}}>
+          <h3 >OUTPUT</h3>
+          <iframe
+            id="my_iframe"
+            srcDoc={srcDoc}
+            title="output"
+            sandbox="allow-scripts"
+            frameBorder="1"
+            width="100%"
+            height="100%"
+                       
+          />
+        </div>
       </div>
     </div>
   );
